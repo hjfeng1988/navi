@@ -1,4 +1,3 @@
 # navi
 
-
-gitlab and gitlab-runner deploy sample
+self navigation site sample,use gitlab-ci.yml to deploy.
