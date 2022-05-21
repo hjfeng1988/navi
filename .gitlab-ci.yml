@@ -1,0 +1,20 @@
+image: instrumentisto/rsync-ssh
+
+before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+
+variables:
+  deploy_user: user
+  deploy_host: x.x.x.x
+  deploy_dir: /data/web/navi.your.com
+
+deploy:
+  stage: deploy
+  tags:
+    - html
+  script:
+    - rsync -avz --chmod=Du=rwx,Dgo=rx,Fu=rw,Fog=r --delete --exclude=.git/ --exclude=.gitlab-ci.yml -e "ssh -o StrictHostKeyChecking=no" . $deploy_user@$deploy_host:$deploy_dir
