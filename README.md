@@ -1,4 +1,4 @@
 # navi
 
 
-gitlab and gitlab-runner deploy
+gitlab and gitlab-runner deploy sample
