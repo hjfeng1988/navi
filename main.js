@@ -13,11 +13,11 @@ function renderNav(data) {
             site.enable !== false && site.url
               ? `<a class="site-item" href="${site.url}" target="_blank">
                   <span class="site-name">${site.name}</span>
-                  ${site.desc ? `<span class="desc">${site.desc}</span>` : ''}
+                  ${site.desc ? `<span class="site-desc">${site.desc}</span>` : ''}
                 </a>`
               : `<div class="site-item disabled-site">
                   <span class="site-name">${site.name}</span>
-                  ${site.desc ? `<span class="desc">${site.desc}</span>` : ''}
+                  ${site.desc ? `<span class="site-desc">${site.desc}</span>` : ''}
                 </div>`
           ).join('')}
         </div>
