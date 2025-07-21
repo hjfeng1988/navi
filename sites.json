@@ -1,0 +1,116 @@
+[
+  {
+    "group": "CICD",
+    "sites": [
+      {
+        "name": "gitlab",
+        "url": "https://gitlab.your.com",
+        "desc": "代码仓库",
+        "enable": true
+      },
+      {
+        "name": "harbor",
+        "url": "https://harbor.your.com",
+        "desc": "镜像仓库",
+        "enable": true
+      },
+      {
+        "name": "CI",
+        "url": "https://drone.your.com",
+        "desc": "CI平台",
+        "enable": true
+      },
+      {
+        "name": "CD",
+        "url": "https://argocd.your.com",
+        "desc": "CD平台，正在建设中...",
+        "enable": false
+      }
+    ]
+  },
+  {
+    "group": "监控",
+    "sites": [
+      {
+        "name": "zabbix",
+        "url": "https://zabbix.your.com",
+        "desc": "监控平台，正在建设中...",
+        "enable": false
+      },
+      {
+        "name": "prometheus",
+        "url": "https://prometheus.your.com",
+        "desc": "监控平台",
+        "enable": true
+      },
+      {
+        "name": "alertmanager",
+        "url": "https://alertmanager.your.com",
+        "desc": "告警平台",
+        "enable": true
+      },
+      {
+        "name": "grafana",
+        "url": "https://grafana.your.com",
+        "desc": "表盘平台",
+        "enable": true
+      }
+    ]
+  },
+  {
+    "group": "安全",
+    "sites": [
+      {
+        "name": "LDAP",
+        "url": "https://ldap.your.com",
+        "desc": "统一认证平台",
+        "enable": true
+      },
+      {
+        "name": "vpn",
+        "url": "https://vpn.your.com",
+        "desc": "VPN，正在建设中...",
+        "enable": false
+      },
+      {
+        "name": "jumpserver",
+        "url": "https://jumpserver.your.com",
+        "desc": "堡垒机",
+        "enable": true
+      }
+    ]
+  },
+  {
+    "group": "分组4",
+    "sites": [
+      {
+        "name": "新网站a",
+        "url": "https://magic.your.com",
+        "desc": "新网站",
+        "enable": true
+      }
+    ]
+  },
+  {
+    "group": "分组5",
+    "sites": [
+      {
+        "name": "新网站b",
+        "url": "https://magic.your.com",
+        "desc": "新网站",
+        "enable": true
+      }
+    ]
+  },
+  {
+    "group": "分组6",
+    "sites": [
+      {
+        "name": "新网站c",
+        "url": "https://magic.your.com",
+        "desc": "新网站",
+        "enable": true
+      }
+    ]
+  }
+]
