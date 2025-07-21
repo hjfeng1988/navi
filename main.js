@@ -9,17 +9,20 @@ function renderNav(data) {
       <div class="site-group">
         <h2 class="group-title">${group.group}</h2>
         <div class="group-sites">
-          ${group.sites.map(site =>
-            site.enable !== false && site.url
-              ? `<a class="site-item" href="${site.url}" target="_blank">
+          ${group.sites.map(site => {
+            if (site.enable == true) {
+              return `<a class="site-item" href="${site.url}" target="_blank">
                   <span class="site-name">${site.name}</span>
-                  ${site.desc ? `<span class="site-desc">${site.desc}</span>` : ''}
-                </a>`
-              : `<div class="site-item disabled-site">
+                  <span class="site-desc">${site.desc}</span>
+                </a>`;
+            } else {
+              let desc = site.desc + ' 正在建设中...';
+              return `<div class="site-item disabled-site">
                   <span class="site-name">${site.name}</span>
-                  ${site.desc ? `<span class="site-desc">${site.desc}</span>` : ''}
-                </div>`
-          ).join('')}
+                  <span class="site-desc">${desc}</span>
+                </div>`;
+            }
+          }).join('')}
         </div>
       </div>`
     ).join('');
