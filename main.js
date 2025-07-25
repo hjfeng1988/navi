@@ -1,6 +1,6 @@
 let allData = [];
 const nav = document.getElementById('nav');
-const search = document.getElementById('search');
+const search = document.querySelector('.search');
 
 function renderNav(data) {
   nav.innerHTML = data
@@ -35,7 +35,7 @@ fetch('sites.json')
     renderNav(allData);
   })
   .catch(() => {
-    nav.innerHTML = '<p>无法加载导航数据</p>';
+    nav.innerHTML = '<p class="nowrap">导航数据加载失败，可能原因：本地file协议，json格式错误</p>';
   });
 
 search.addEventListener('input', function() {
