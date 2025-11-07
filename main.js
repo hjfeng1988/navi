@@ -1,6 +1,8 @@
-let allData = [];
-const nav = document.getElementById('nav');
-const search = document.querySelector('.search');
+let allData = []
+const dataFile = 'sites.json'
+const nav = document.getElementById('nav')
+const search = document.querySelector('.search')
+
 
 function renderNav(data) {
   nav.innerHTML = data
@@ -14,38 +16,52 @@ function renderNav(data) {
               return `<a class="site-item" href="${site.url}" target="_blank">
                   <span class="site-name">${site.name}</span>
                   <span class="site-desc">${site.desc}</span>
-                </a>`;
+                </a>`
             } else {
-              let desc = site.desc + ' 正在建设中...';
+              site.desc += ' 正在建设中...'
               return `<div class="site-item disabled-site">
                   <span class="site-name">${site.name}</span>
-                  <span class="site-desc">${desc}</span>
-                </div>`;
+                  <span class="site-desc">${site.desc}</span>
+                </div>`
             }
           }).join('')}
         </div>
       </div>`
-    ).join('');
+    ).join('')
 }
 
-fetch('sites.json')
-  .then(res => res.json())
-  .then(data => {
-    allData = data;
-    renderNav(allData);
-  })
-  .catch(() => {
-    nav.innerHTML = '<p class="nowrap">导航数据加载失败，可能原因：本地file协议，json格式错误</p>';
-  });
+
+if (window.location.protocol === 'file:') {
+  nav.innerHTML = '<p class="nowrap">请使用HTTP服务器运行此页面（本地file协议不支持fetch请求）</p>'
+} else {
+  fetch(dataFile)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`)
+      }
+      return res.json()
+    })
+    .then(data => {
+      allData = data
+      renderNav(allData)
+    })
+    .catch((err) => {
+      if (err.message.includes('HTTP 404')) {
+        nav.innerHTML = `<p class="nowrap">${dataFile}文件不存在</p>`
+      } else {
+        nav.innerHTML = `<p class="nowrap">${dataFile}格式错误</p>`
+      } 
+    })
+}
 
 search.addEventListener('input', function() {
-  const keyword = this.value.trim().toLowerCase();
-  if (!keyword) return renderNav(allData);
+  const keyword = this.value.trim().toLowerCase()
+  if (!keyword) return renderNav(allData)
   const filtered = allData
     .map(group => ({
       ...group,
       sites: group.sites.filter(site => site.name.toLowerCase().includes(keyword))
     }))
-    .filter(group => group.sites.length);
-  renderNav(filtered);
-});
+    .filter(group => group.sites.length)
+  renderNav(filtered)
+})
