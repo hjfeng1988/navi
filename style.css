@@ -112,29 +112,14 @@ h1 {
   #nav {
     grid-template-columns: repeat(3, 1fr);
   }
-  .search {
-    max-width: 1056px;
-  }
 }
 @media (max-width: 900px) {
   #nav {
     grid-template-columns: repeat(2, 1fr);
   }
-  .search {
-    max-width: 704px;
-  }
 }
 @media (max-width: 600px) {
   #nav {
     grid-template-columns: repeat(1, 1fr);
-    padding: 4px 8px;
-  }
-  .search {
-    max-width: 100%;
-    width: calc(100% - 16px);
-    padding-left: 8px;
-    padding-right: 8px;
-    margin-left: 0;
-    margin-right: 0;
   }
 }
