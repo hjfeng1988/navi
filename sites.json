@@ -69,7 +69,7 @@
       {
         "name": "vpn",
         "url": "https://vpn.your.com",
-        "desc": "VPN",
+        "desc": "虚拟专用网络",
         "enable": false
       },
       {

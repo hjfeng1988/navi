@@ -18,10 +18,11 @@ function renderNav(data) {
                   <span class="site-desc">${site.desc}</span>
                 </a>`
             } else {
-              site.desc += ' 正在建设中...'
+              const newDesc = site.desc + ' 正在建设中...'
+              // site.desc += ' 正在建设中...' // bug: 会一直累加
               return `<div class="site-item disabled-site">
                   <span class="site-name">${site.name}</span>
-                  <span class="site-desc">${site.desc}</span>
+                  <span class="site-desc">${newDesc}</span>
                 </div>`
             }
           }).join('')}
